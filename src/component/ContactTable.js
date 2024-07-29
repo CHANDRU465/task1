@@ -6,6 +6,7 @@ import { SiKlarna } from "react-icons/si";
 import { CiUser } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
 import { FaUserCircle } from "react-icons/fa";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 const ContactTable = () => {
   const [selectAll, setSelectAll] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);

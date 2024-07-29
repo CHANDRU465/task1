@@ -78,7 +78,7 @@ const option = () => {
     ],
   };
 };
-const Dashboard = () => {
+const DashboardContainer = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handleDateChange = (date) => {
@@ -115,9 +115,8 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="flex-container">
-      <Header />
-      <section className="main-content">
+    
+      <>
         <div className="filter-container">
           <div className="date-picker-container-main">
             <DatePicker
@@ -154,9 +153,8 @@ const Dashboard = () => {
           </div>
         </div>
         <ContactTable />
-      </section>
-      <Footer />
-    </div>
+      </>
+
   );
 };
 const CustomInput = ({ value, onClick }) => (
@@ -165,4 +163,4 @@ const CustomInput = ({ value, onClick }) => (
   </button>
 );
 
-export default Dashboard;
+export default DashboardContainer;

@@ -21,21 +21,37 @@ body {
 .sidebar {
   grid-column: 1 / 2; /* Sidebar spans the first column */
   grid-row: 1 / 4; /* Sidebar spans all rows */
-  background-color: #03346e; /* Sidebar background color */
-  padding: 20px;
+  background-color: #fff;
+  border-right: 1px solid lightgrey;
 }
 
 .logo-container {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.menu {
-  list-style-type: none;
-  padding: 0;
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.menu li {
-  margin-bottom: 10px;
-  color: #ccc;
+.menu-link-inactive,
+.menu-link-active {
+  padding: 8px;
+  color: #221919;
+  text-decoration: none;
+}
+
+.menu-link-inactive:hover {
+  background-color: lightskyblue;
+  border-left: 2px solid blue;
+}
+
+.menu-link-active{
+  background-color: lightskyblue;
+  border-left: 2px solid blue;
 }
 
 .header {
