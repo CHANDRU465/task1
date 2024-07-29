@@ -11,10 +11,11 @@ body {
 
 .layout {
   display: grid;
-  grid-template-columns: 250px 1fr; /* Sidebar width and main content width */
+  grid-template-columns: 0.5fr 3fr; /* Sidebar width and main content width */
   grid-template-rows: auto 1fr auto; /* Header, main content, footer */
   flex: 1; /* Make the dashboard take all the remaining space */
   min-height: 100vh; /* Full viewport height */
+  width: 100%;
 }
 
 .sidebar {
@@ -38,20 +39,18 @@ body {
 }
 
 .header {
-  background-color: #ccc; /* Example background color */
-  padding: 20px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .main-content {
   flex: 1; /* Take up the remaining space between header and footer */
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-}
-
-.main {
-  max-width: 800px; /* Set a max width for the content */
-  text-align: center;
+  flex-direction: column;
+  padding: 22px;
+  gap: 20px;
 }
 
 .flex-container {
@@ -63,4 +62,219 @@ body {
 .footer {
   padding: 20px;
   background-color: #ddd; /* Different background color for footer */
+}
+
+.divider {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.menu-bar {
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+}
+.date-display {
+  border: none;
+}
+
+.date-picker-container-main {
+  border: 1px solid lightgray;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+
+  gap: 10px;
+}
+
+.date-picker-button {
+  border: none;
+  padding-inline: 0px;
+  padding-block: 0px;
+  font-size: 16px;
+  background-color: transparent;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter {
+  border: 1px solid lightgray;
+  padding: 8px 20px;
+
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  gap: 10px;
+}
+.date-value {
+  font-size: 16px;
+}
+
+.filter-icon {
+  font-size: 16px;
+}
+.card {
+  border: 1px solid lightgray;
+  overflow: hidden;
+  border-radius: 15px;
+}
+.card-content {
+  padding: 20px;
+}
+.card-value-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-icon {
+  border: 1px solid lightgray;
+  padding: 5px;
+  border-radius: 10px;
+  width: 50px;
+  height: 50px;
+  color: #1b95e4;
+}
+
+.card-arrow {
+  width: 30px;
+  height: 30px;
+}
+
+.card-content2 {
+  border-top: 1px solid lightgray;
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+  background-color: #f6fbfe;
+
+  overflow: hidden;
+}
+.card-stats-green,
+.card-stats-red {
+  color: #11da72;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.card-stats-red {
+  color: red;
+}
+
+.card-details {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 10px;
+}
+
+.revenue-details {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.revenue-option {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 6px;
+}
+
+.revenue-icon {
+  width: 30px;
+  height: 30px;
+}
+.revenue-title {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  gap: 10px;
+}
+.revenue-content {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  padding: 15px;
+}
+
+.revenue-content2 {
+  padding: 15px;
+}
+.contact-container {
+  border-radius: 10px;
+}
+.contact-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+}
+.contact-container {
+  border: 1px solid lightgray;
+}
+.search-bar {
+  border: none;
+  margin-left: 10px;
+  font-size: 14px;
+}
+.Search-header {
+  border: 1px solid lightgray;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.contact-content {
+  padding: 10px;
+  margin: 10px;
+}
+.person {
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  width: 18px;
+  height: 23px;
+}
+
+th,
+td {
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+.contact-icon {
+  border: 1px solid lightgray;
+  padding: 4px;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+/* .table-data {
+  background-color: rgb(214, 213, 213);
+} */
+
+.table-lead-source {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: lightgray;
+  color: #252525;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
 }
