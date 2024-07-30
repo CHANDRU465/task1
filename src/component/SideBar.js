@@ -2,11 +2,9 @@ import React from "react";
 import OfficeLogo from "../assets/images/RadomeTechLogo.png";
 import { Link, useLocation } from "react-router-dom";
 import { CiHome } from "react-icons/ci";
-import { IoIosNotificationsOutline } from "react-icons/io";
 import { RiTaskLine } from "react-icons/ri";
 import { FaRegNoteSticky } from "react-icons/fa6";
-import { MdOutlineEmail } from "react-icons/md";
-import { CiCalendar } from "react-icons/ci";
+import { FaWpforms } from "react-icons/fa6";
 
 const SideBar = () => {
   const location = useLocation();
@@ -32,6 +30,18 @@ const SideBar = () => {
           Dashboard
         </Link>
         <Link
+          to="/form"
+          className={
+            location.pathname === "/form"
+              ? "menu-link-active"
+              : "menu-link-inactive"
+          }
+        >
+          <FaWpforms style={{ marginRight: "10px" }} />
+          Form
+        </Link>
+
+        <Link
           to="/task"
           className={
             location.pathname === "/task"
@@ -52,28 +62,6 @@ const SideBar = () => {
         >
           <FaRegNoteSticky style={{ marginRight: "10px" }} />
           Notes
-        </Link>
-        <Link
-          to="/email"
-          className={
-            location.pathname === "/email"
-              ? "menu-link-active"
-              : "menu-link-inactive"
-          }
-        >
-          <MdOutlineEmail style={{ marginRight: "10px" }} />
-          Email
-        </Link>
-        <Link
-          to="/calendar"
-          className={
-            location.pathname === "/calendar"
-              ? "menu-link-active"
-              : "menu-link-inactive"
-          }
-        >
-          <CiCalendar style={{ marginRight: "10px" }} />
-          Calendar
         </Link>
       </div>
     </div>
