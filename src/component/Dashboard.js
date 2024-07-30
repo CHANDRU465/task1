@@ -1,88 +1,166 @@
-import React from "react";
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
+import React, { useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { CiCalendar } from "react-icons/ci";
+import { CiFilter } from "react-icons/ci";
+import Card from "./Card";
+import { TbCoins } from "react-icons/tb";
+import { IoIosStats } from "react-icons/io";
+import { FaRegUser } from "react-icons/fa";
+import { TbPigMoney } from "react-icons/tb";
+import { IoChevronDown } from "react-icons/io5";
+import HighchartsReact from "highcharts-react-official";
+import Highcharts from "highcharts";
+import ContactTable from "./ContactTable";
 
-const option_ac = () => {
+const option = () => {
   return {
     chart: {
       type: "line",
     },
     title: {
-      text: "Growth of Internet Users Worldwide (logarithmic scale)",
+      text: "",
     },
-
-    accessibility: {
+    xAxis: {
+      categories: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
+    },
+    yAxis: {
+      title: {
+        text: "Temperature (°C)",
+      },
+    },
+    plotOptions: {
+      line: {
+        dataLabels: {
+          enabled: false,
+        },
+        enableMouseTracking: false,
+      },
+    },
+    credits: {
       enabled: false,
     },
-    credits:{
-      enabled:false
-    },
-
-    xAxis: {
-      title: {
-        text: "Year",
-      },
-      categories: [1995, 2000, 2005, 2010, 2015, 2020, 2023],
-    },
-
-    yAxis: {
-      type: "logarithmic",
-      title: {
-        text: "Number of Internet Users (in millions)",
-      },
-    },
-
-    tooltip: {
-      headerFormat: "<b>{series.name}</b><br />",
-      pointFormat: "{point.y} million(s)",
-    },
-
     series: [
       {
-        name: "Internet Users",
-        keys: ["y", "color"],
+        name: "Reggane",
         data: [
-          [16, "#0000ff"],
-          [361, "#8d0073"],
-          [1018, "#ba0046"],
-          [2025, "#d60028"],
-          [3192, "#eb0014"],
-          [4673, "#fb0004"],
-          [5200, "#ff0000"],
+          16.0, 18.2, 23.1, 27.9, 32.2, 36.4, 39.8, 38.4, 35.5, 29.2, 22.0,
+          17.8,
         ],
-        color: {
-          linearGradient: {
-            x1: 0,
-            x2: 0,
-            y1: 1,
-            y2: 0,
-          },
-          stops: [
-            [0, "#0000ff"],
-            [1, "#ff0000"],
-          ],
+        marker: {
+          enabled: false,
+        },
+      },
+      {
+        name: "Tallinn",
+        data: [
+          -2.9, -3.6, -0.6, 4.8, 10.2, 14.5, 17.6, 16.5, 12.0, 6.5, 2.0, -0.9,
+        ],
+        marker: {
+          enabled: false,
         },
       },
     ],
   };
 };
+const DashboardContainer = () => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
-const Dashboard = () => {
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
 
-  
+  const getFormattedDate = (date) => {
+    if (!date) return "";
+    const options = { month: "short", day: "numeric", year: "numeric" };
+    return new Intl.DateTimeFormat("en-US", options).format(date);
+  };
+  const cardData = [
+    {
+      cardIcon: <TbCoins className="card-icon" />,
+      cardTitle: "Total Sales",
+      cardValue: "$ 23,569.00",
+      cardStats: "10,5 %",
+      cardStatsCondition: true,
+    },
+    {
+      cardIcon: <IoIosStats className="card-icon" />,
+      cardTitle: "Avg.sale value",
+      cardValue: "$ 12,680.00",
+      cardStats: "3,4 %",
+      cardStatsCondition: true,
+    },
+    {
+      cardIcon: <FaRegUser className="card-icon" />,
+      cardTitle: "Total Deals",
+      cardValue: "$ 1204",
+      cardStats: "0,5 %",
+      cardStatsCondition: false,
+    },
+  ];
+
   return (
-    <div className="flex-container">
-      <Header/>
-      <section className="main-content">
-        <div className="main ">
-          <HighchartsReact highcharts={Highcharts} options={option_ac()} />
+    
+      <>
+        <div className="filter-container">
+          <div className="date-picker-container-main">
+            <DatePicker
+              selected={selectedDate}
+              onChange={handleDateChange}
+              customInput={<CustomInput />}
+              popperPlacement="bottom-end"
+              showPopperArrow={false}
+              className="hidden-date-picker"
+            />
+            <p className="date-value">{getFormattedDate(selectedDate)}</p>
+          </div>
+          <div className="filter">
+            <CiFilter className="filter-icon" /> Filter
+          </div>
         </div>
-      </section>
-      <Footer/>
-    </div>
+
+        <div className="card-details">
+          {cardData.map((card, index) => (
+            <Card key={index} card={card} />
+          ))}
+        </div>
+        <div className="revenue-details">
+          <div className="revenue-content">
+            <div className="revenue-title">
+              <TbPigMoney className="revenue-icon" /> Revenue
+            </div>
+            <p className="revenue-option">
+              All Products <IoChevronDown />
+            </p>
+          </div>
+          <div className="revenue-content2">
+            <HighchartsReact highcharts={Highcharts} options={option()} />
+          </div>
+        </div>
+        <ContactTable />
+      </>
+
   );
 };
+const CustomInput = ({ value, onClick }) => (
+  <button className="date-picker-button" onClick={onClick}>
+    <CiCalendar />
+  </button>
+);
 
-export default Dashboard;
+export default DashboardContainer;
