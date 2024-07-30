@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CiCalendar } from "react-icons/ci";
@@ -115,46 +113,44 @@ const DashboardContainer = () => {
   ];
 
   return (
-    
-      <>
-        <div className="filter-container">
-          <div className="date-picker-container-main">
-            <DatePicker
-              selected={selectedDate}
-              onChange={handleDateChange}
-              customInput={<CustomInput />}
-              popperPlacement="bottom-end"
-              showPopperArrow={false}
-              className="hidden-date-picker"
-            />
-            <p className="date-value">{getFormattedDate(selectedDate)}</p>
-          </div>
-          <div className="filter">
-            <CiFilter className="filter-icon" /> Filter
-          </div>
+    <>
+      <div className="filter-container">
+        <div className="date-picker-container-main">
+          <DatePicker
+            selected={selectedDate}
+            onChange={handleDateChange}
+            customInput={<CustomInput />}
+            popperPlacement="bottom-end"
+            showPopperArrow={false}
+            className="hidden-date-picker"
+          />
+          <p className="date-value">{getFormattedDate(selectedDate)}</p>
         </div>
+        <div className="filter">
+          <CiFilter className="filter-icon" /> Filter
+        </div>
+      </div>
 
-        <div className="card-details">
-          {cardData.map((card, index) => (
-            <Card key={index} card={card} />
-          ))}
-        </div>
-        <div className="revenue-details">
-          <div className="revenue-content">
-            <div className="revenue-title">
-              <TbPigMoney className="revenue-icon" /> Revenue
-            </div>
-            <p className="revenue-option">
-              All Products <IoChevronDown />
-            </p>
+      <div className="card-details">
+        {cardData.map((card, index) => (
+          <Card key={index} card={card} />
+        ))}
+      </div>
+      <div className="revenue-details">
+        <div className="revenue-content">
+          <div className="revenue-title">
+            <TbPigMoney className="revenue-icon" /> Revenue
           </div>
-          <div className="revenue-content2">
-            <HighchartsReact highcharts={Highcharts} options={option()} />
-          </div>
+          <p className="revenue-option">
+            All Products <IoChevronDown />
+          </p>
         </div>
-        <ContactTable />
-      </>
-
+        <div className="revenue-content2">
+          <HighchartsReact highcharts={Highcharts} options={option()} />
+        </div>
+      </div>
+      <ContactTable />
+    </>
   );
 };
 const CustomInput = ({ value, onClick }) => (
